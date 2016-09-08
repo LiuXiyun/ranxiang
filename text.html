@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="index.css"></head>
+	<style>li{float: left;}</style>
+<body>
+	<div class="input-group" id="participation">
+		<input type="text" class="form-control" placeholder="任务成员">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</button>
+		</span>
+	</div>
+	<ul class="list-unstyled">
+		<li>
+			<label for="1">
+				<input type="checkbox" id="1" checked value="1">hahah</label>
+		</li>
+		<li>
+			<label for="2">
+				<input type="checkbox" id="2" value="2">hahah</label>
+		</li>
+		<li>
+			<label for="3">
+				<input type="checkbox" id="3" value="3">hahah</label>
+		</li>
+		<li>
+			<label for="4">
+				<input type="checkbox" id="4" value="4">hahah</label>
+		</li>
+		<li>
+			<label for="5">
 				<input type="checkbox" id="5" value="5">hahah</label>
+		</li>
+	</ul>
+	<input type="text">
+	<script>
+		var a = null;
+		$("input[type='checkbox']").on('click',function(){
+			if($(this).is(':checked')){
+				var oValue = $(this).attr('value');
+				a = $("#participation input").val();
+				$("#participation input").val(a + ',' + oValue);
+
+			}
+		})
+	</script>
+	<style>
+		#taskLabel span:first-child{float: left;margin-right: 20px;}
+		#taskLabel .labelIn{float: left;}
+		#taskLabel .labelIn li{
+			float: left;
+			margin-right: 20px;
+			background: red;
+			color: #fff;
+			position: relative;
+			font-size: 12px;
+			padding: 2px 5px;
+		}
+		
+		#taskLabel .glyphicon{
+			position: absolute;
+			right: -36px;
+			z-index: 1;
+			top: 0;
+			display: block;
+			width: 20px;
+			height: 21px;
+			text-align: center;
+			border-radius: 0 50% 50% 0;
+			line-height: 21px;
+		}
+		#taskLabel .labelIn .glyphicon:hover{
+			cursor: pointer;
+			color: red
+		}
+
+		.labelOut{cursor: pointer;}
+	</style>
+	<div id="taskLabel">
+		<span>标签:</span>
+		<ul class="list-unstyled labelIn clearfix">
+			<li>加油<span class="glyphicon glyphicon-remove"></span></li>
+			<li>加油<span class="glyphicon glyphicon-remove"></span></li>
+			<li>加油<span class="glyphicon glyphicon-remove"></span></li>
+		</ul>
+		<div class="clearfix"></div>
+		<ul class="list-unstyled labelOut labelIn">
+			<li>加油</li>
+			<li>加油</li>
+			<li>加油</li>
+		</ul>
+	</div>
+	<script>
+		//随机获取标签颜色赋给标签
+		function getColor(){ //随机获取标签颜色
+			return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+		}
+		var a = [];
+		(function liBackColor(){ //赋给标签
+			for(var i = 0;i<$("#taskLabel .labelIn li").length;i++){
+				(function(oIndex){
+					a[i] = getColor();
+					index = oIndex;
+					$("#taskLabel .labelOut li").eq(i).css({
+						'background' : a[i]
+					})
+					$("#taskLabel .labelIn li .glyphicon").eq(i).css({
+						'background' : a[i],
+						'color' : a[i]
+					})
+				})(i)
+			}
+		})();
+		$("#taskLabel .labelIn li").hover(function(){ //标签移入移出改变删除符号颜色
+			$(this).children("span").css({
+					'color' : '#fff' 
+				});
+		},function(){
+			var index = $(this).index();
+			$(this).children("span").css({
+					'color' : a[index]
+				})
+		})
+		$(".glyphicon").on("click",function(){
+			$(this).parent("#taskLabel .labelIn li").remove();
+		})
+	</script>
+</body>
+</html>

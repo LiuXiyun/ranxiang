@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" type="text/css" href="sign.css"/>
+	<link rel="stylesheet" href="task.css">
+	<script type="text/javascript" src="calendar.js"></script>
+	<script type="text/javascript">
+$(function(){
+  //ajax获取日历json数据
+  var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"},{"signDay":"14"}];
+   calUtil.init(signList);
+});
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation" >
+		<div class="container-fluid">
+			<div class="navbar-header col-md-3">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" class="img-responsive img-circle" src="img/1.png"></a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" id="name">XXX</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav col-md-5">
+					<li class="">
+						<a href="#">
+							<span class="glyphicon glyphicon-home"></span>
+							主页
+						</a>
+					</li>
+					<li class="active">
+						<a href="#" class="" >
+							<span class="glyphicon glyphicon-list"></span>
+							任务
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-log-out"></span>
+							退出登录
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container_fluid row task">
+		<div class="col-sm-3 taskNav">
+			<div class="panel-group" id="list" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading"  role="tab">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#list" 
+				   href="#taskList">
+								<span class="glyphicon glyphicon-list"></span>
+								任务
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</h4>
+					</div>
+					<div id="taskList" class="panel-collapse collapse in">
+						<ul class="list-unstyled">
+							<li>
+								<a href="">进行中</a>
+							</li>
+							<li>
+								<a href="">未完成</a>
+							</li>
+							<li>
+								<a href="">已完成</a>
+							</li>
+						</ul>
+					</div>
+					<div class="panel-heading"  role="tab">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#list" 
+				   href="#taskList2">
+								<span class="glyphicon glyphicon-list"></span>
+								任务
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</h4>
+					</div>
+					<div id="taskList2" class="panel-collapse collapse">
+						<ul class="list-unstyled"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-9 right_aside">
+			<div id="container">
+				<div id="myTask">
+					<div class="right_head">
+						<div class="checkbox pull-left">
+							<label>
+								<input type="checkbox">全选</label>
+						</div>
+						<div class="dropdown pull-left">
+							<button id="category" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="disabled">
+								类别
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<li>
+									<a href="">已完成</a>
+								</li>
+								<li>
+									<a href="">进行中</a>
+								</li>
+								<li>
+									<a href="">未开始</a>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown pull-left">
+							<button id="sort" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="disabled">
+								排序
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="sort">
+								<li>
+									<a href="">默认</a>
+								</li>
+								<li>
+									<a href="">按紧急程度</a>
+								</li>
+								<li>
+									<a href="">按任务创建时间</a>
+								</li>
+								<li>
+									<a href="">按任务更新时间</a>
+								</li>
+							</ul>
+						</div>
+						<div class="input-group" id="searchTask">
+							<input type="text" class="form-control" placeholder="任务名称或者时间">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+						<div class="pull-right">
+							<button type="button" class="btn btn-success newTask" data-toggle="modal" data-target="#newTask">添加新任务</button>
+							<!-- 模态框（Modal） -->
+							<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">添加新任务</h4>
+										</div>
+										<form action="">
+											<div class="modal-body" id="newTask">
+												<input type="text" class="form-control" placeholder="任务名称" id="taskName">
+												<div class="row" id="messionDirector">
+													<div class="col-xs-4 form-group">
+														<label for="">负责人</label>
+														<select name="director" id="director" class="form-control">
+															<option value="haha">哈哈</option>
+															<option value="haha">哈哈</option>
+															<option value="haha">哈哈</option>
+															<option value="haha">哈哈</option>
+														</select>
+													</div>
+													<div class="col-xs-4 form-group">
+														<label for="end_date">结束日期</label>
+														<input type="date" id="end_date" class="form-control"></div>
+
+													<div class="col-xs-4 form-group">
+														<label for="">紧急程度</label>
+														<select name="director" id="director" class="form-control">
+															<option value="haha" id="normal" class="normal">正常</option>
+															<option value="haha" id="urgent" class="urgent">紧急</option>
+															<option value="haha" id="emergency" class="emergency">非常紧急</option>
+														</select>
+													</div>
+												</div>
+												<div class="participation row">
+													<div class="form-group">
+														<label class="col-sm-2 control-label">参加人员</label>
+														<div class="col-sm-10">
+															<span class="participats">
+																<a href="">
+																	<img src="img/1.png" alt="" class="headImg">
+																	<span class="name">离老吴</span>
+																</a>
+															</span>
+															<span class="participats">
+																<a href="">
+																	<img src="img/1.png" alt="" class="headImg">
+																	<span class="name">离老吴</span>
+																</a>
+															</span>
+															<span class="participats">
+																<a href="">
+																	<img src="img/1.png" alt="" class="headImg">
+																	<span class="name">离老吴</span>
+																</a>
+															</span>
+															<span class="participats" id="plus">
+																<input type="text" class="form-control" placeholder="查询人员或点击添加">
+																<button class="btn btn-default" type="button">
+																	<span class="glyphicon glyphicon-search"></span>
+																</button>
+															</span>
+															<span class="glyphicon  glyphicon-plus-sign plusparticipats plus"></span>
+
+														</div>
+														<div class="clearfix"></div>
+
+													</div>
+												</div>
+												<div class="taskDeirection">
+													<label for="taskDeirection">任务描述</label>
+													<textarea class="form-control" rows="5" id="textarea"></textarea>
+												</div>
+												<div id="taskLabel">
+													<span>标签:</span>
+													<ul class="list-unstyled labelIn clearfix" id="labelIn">
+														<li>
+															加油
+															<span class="glyphicon glyphicon-remove"></span>
+														</li>
+														<li>
+															加油
+															<span class="glyphicon glyphicon-remove"></span>
+														</li>
+														<li>
+															加油
+															<span class="glyphicon glyphicon-remove"></span>
+														</li>
+													</ul>
+													<span class="participats" id="addLabel">
+																<input type="text" class="form-control" placeholder="添加标签">
+																<button class="btn btn-default" type="button" id="addLabelBtn">
+																	<span class="glyphicon glyphicon-plus"></span>
+																</button>
+															</span>
+													<span class="glyphicon glyphicon-plus-sign plus addLabel"></span>
+													<div class="clearfix"></div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+													<button type="submit" class="btn btn-primary">提交</button>
+												</div>
+											</form>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal -->
+								</div>
+							</div>
+						</div>
+						<div id="myTaskList">
+
+							<table class="table table-hover">
+								<tr>
+									<td class="number">1</td>
+									<td class="mission">
+										<span class="taskName">啊哈哈哈哈哈哈</span>
+										<button class="btn success">10%</button>
+									</td>
+									<td class="emergency">正常</td>
+									<td class="releaseDate">2019-09-09</td>
+								</tr>
+								<tr>
+									<td class="number">1</td>
+									<td>
+										<span class="taskName">啊哈哈哈哈哈哈</span>
+										<button class="btn success">10%</button>
+									</td>
+									<td class="emergency">正常</td>
+									<td class="releaseDate">2019-09-09</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var dHeight = $(document).height(); //获取文档高度
+		var hHeight = $('nav').height(); //获取头部高度
+		var oH = dHeight - hHeight;    //改变左侧侧边栏高度
+		$('.task').height(oH);
+		$(function(){   //新建任务点击添加人员时候的输入框切换
+			$(document).bind("click",function(e){ 
+				var target = $(e.target); 
+				if(target.closest(".plusparticipats,#plus").length == 0){ 
+				$("#plus").hide(); 
+				$(".plus").show();
+				} else{
+				$("#plus").fadeIn().css("display","inline-block");
+				$(".plus").hide();
+				}
+			}) 
+		}) 
+
+	</script>
+	<script>
+		//随机获取标签颜色赋给标签
+		function getColor(){ //随机获取标签颜色
+			return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+		}
+		var a = [];
+		(function liBackColor(){ //赋给标签
+			for(var i = 0;i<$("#taskLabel .labelIn li").length;i++){
+				(function(oIndex){
+					a[i] = getColor();
+					index = oIndex;
+					$("#taskLabel .labelIn li").eq(i).css({
+						'background' : a[i]
+					})
+					$("#taskLabel .labelIn li .glyphicon").eq(i).css({
+						'background' : a[i],
+						'color' : a[i]
+					})
+				})(i)
+			}
+		})();
+		$("#taskLabel .labelIn li").hover(function(){ //标签移入移出改变删除符号颜色
+			$(this).children("span").css({
+					'color' : '#fff' 
+				});
+			console.log($("this").children('span').css('color'));
+		},function(){
+			var index = $(this).index();
+			$(this).children("span").css({
+					'color' : a[index]
+				})
+		})
+		$(".glyphicon").on("click",function(){ //点击删除此标签
+			$(this).parent("#taskLabel .labelIn li").remove();
+		})
+
+		$(function(){   //新建标签点击添加人员时候的输入框切换
+			$(document).bind("click",function(e){ 
+				var target = $(e.target); 
+				if(target.closest(".addLabel,#addLabel").length == 0){ 
+				$("#addLabel").hide(); 
+				$(".addLabel").show();
+				} else{
+				$("#addLabel").fadeIn().css("display","inline-block");
+				$(".addLabel").hide();
+				}
+			}) 
+		}) 
+
+		$("#addLabelBtn").on("click",function(){
+			var val = $("#addLabel input").val();
+			var color = getColor();
+			$("#labelIn").append("<li style = 'background:" + color + "'>" + val + "<span class='glyphicon glyphicon-remove' style='background:"+color+"'></span></li>");
+			$(".glyphicon").on("click",function(){ //点击删除此标签
+				$(this).parent("#taskLabel .labelIn li").remove();
+			})
+		})
+
+	</script></body>
+</html>

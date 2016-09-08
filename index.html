@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" type="text/css" href="sign.css"/>
+	<link rel="stylesheet" href="timeline.css">
+	<script type="text/javascript" src="calendar.js"></script>
+	<script type="text/javascript">
+$(function(){
+  //ajax获取日历json数据
+  var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"},{"signDay":"14"}];
+   calUtil.init(signList);
+});
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation" >
+		<div class="container-fluid">
+			<div class="navbar-header col-md-3">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" class="img-responsive img-circle" src="img/1.png"></a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" id="name">XXX</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav col-md-5">
+					<li class="active">
+						<a href="#">
+							<span class="glyphicon glyphicon-home"></span>
+							主页
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="#"">
+							<span class="glyphicon glyphicon-list"></span>
+							任务
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-log-out"></span>
+							退出登录
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 calendar">
+				<div id="calendar">
+					<div style="width:300px;height:300px;" id="calendar"></div>
+				</div>
+				<button class="btn btn-block btn-lg" id="signIn"  data-toggle="modal" data-target="#myModal">签到</button>
+
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">签到成功</h4>
+							</div>
+							<div class="modal-body" id="date"></div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal -->
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<ul class="timeline">
+			<li>
+				<div class="timeline-badge">
+					<img src="img/1.png" alt=""></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+						<p>
+							<small class="text-muted"> <i class="glyphicon glyphicon-time"></i>
+								11 hours ago via Twitter
+							</small>
+						</p>
+					</div>
+					<div class="timeline-body">
+						<p>
+							Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+						</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="pull-left">今天待完成任务</h3>
+				<span class="pull-right jindu">进度</span>
+				<div class="clearfix"></div>
+				<ol class="list-unstyled indexOl">
+					<li>
+						<a href="＃"><span>1</span>aaaaa <span class="pull-right">10%</span></a>
+					</li>
+					<li>
+						<a href="＃"><span>2</span>aaaaa <span class="pull-right">10%</span></a>
+					</li>
+					<li>
+						<a href="＃"><span>3</span>aaaaa <span class="pull-right">10%</span></a>
+					</li>
+				</ol>
+				<a href="" class="pull-right">查看更多</a>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var mydate = new Date();
+   		var str = "" + mydate.getFullYear() + "年";
+   		str += mydate.getMonth() + 1 + "月";
+   		str += mydate.getDate() + "日";
+   		str += mydate.getHours() + "点"; //获取当前小时数(0-23)
+		str += mydate.getMinutes() + "分"; //获取当前分钟数(0-59)
+		str += mydate.getSeconds() + "秒"; //获取当前秒数(0-59)
+		$("#date").html(str);
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+/*body{background: #ccc}*/
+a{color:#666;}
+a:hover{text-decoration: none;color:#333;}
+a:active{text-decoration: none}
+a:link{text-decoration: none}
+a:focus{text-decoration: none}
+body{background: #EEE}
+tr:hover{cursor: pointer;}
+.navbar-header.col-md-3{width: 21%;}
+.navbar-default .navbar-brand{color:#fff;}
+.navbar-default .navbar-nav > .active > a{color:#337AB7;background: #D9EDF7}
+.navbar-default .navbar-nav > li > a{color:#fff;padding:15px 30px;}
+nav .navbar-brand:first-child{padding: 0px 5px;}
+nav img.img-responsive{height: 50px;width: 50px}
+nav li span:first-child{margin-right: 10px;}
+.navbar-default{background: #337AB7}
+.navbar{border-radius: 0;border:0;}
+#name{margin-right: 100px;}
+.dropdown-menu{min-width: 120px;text-align: center;}
+nav.navbar .container-fluid .navbar-brand{margin-left: 0;}
+#calendar{margin: 0 auto;}
+.indexOl li{height: 44px;font-size: 16px;}
+.indexOl li a{display: block;width: 100%;line-height: 20px;height: 100%;padding:10px 0 10px 5px;border-bottom: 1px solid #ccc}
+.indexOl span{margin-right: 10px;}
+.indexOl li:hover{background: #eee}
+.normal{position: relative;}
+.normal:after{position: absolute;content: "";width: 20px;height: 20px;background: #ccc;border-radius: 50%;top: 0;left: 0;}
+span.jindu{font-size: 16px;margin-top: 20px;margin-right: 15px;}
+.dropdown-menu .divider{margin: 0;}
+/* 小屏幕（平板，小于等于 768px） */
+@media screen and (max-width: 768px) { 
+	#calendar{}
+ }
+
+/* 中等屏幕（桌面显示器，小于等于 992px，大于等于 768px） */
+@media (min-width: 768px) and (max-width: 992px) { 
+	.dropdown-menu{text-align: center;}
+	#calendar{}
+ }
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media screen and (min-width: 992px){ 
+	#calendar{}
+	#signIn{width: 290px;margin: 0 auto;margin-top: 30px;}
+	.dropdown-menu{text-align: center;}
+}
