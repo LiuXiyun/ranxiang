@@ -158,7 +158,7 @@ $(function(){
 							<button type="button" class="btn btn-success newTask" data-toggle="modal" data-target="#newTask">添加新任务</button>
 							<!-- 模态框（Modal） -->
 							<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								
+
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -167,7 +167,19 @@ $(function(){
 										</div>
 										<form action="">
 											<div class="modal-body" id="newTask">
-												<input type="text" class="form-control" placeholder="任务名称" id="taskName">
+												<div class="row taskname1">
+													<div class="col-xs-8">
+														<input type="text" class="form-control" placeholder="任务名称" id="taskName">
+													</div>
+													<div class="col-xs-4">
+														 <label for="director">紧急程度</label>
+														<select name="director" id="director" class="form-control">
+															<option value="haha" id="normal" class="normal">正常</option>
+															<option value="haha" id="urgent" class="urgent">紧急</option>
+															<option value="haha" id="emergency" class="emergency">非常紧急</option>
+														</select>
+													</div>
+												</div>
 												<div class="row" id="messionDirector">
 													<div class="col-xs-4 form-group">
 														<label for="">负责人</label>
@@ -179,150 +191,157 @@ $(function(){
 														</select>
 													</div>
 													<div class="col-xs-4 form-group">
-														<label for="end_date">结束日期</label>
-														<input type="date" id="end_date" class="form-control"></div>
-
-													<div class="col-xs-4 form-group">
-														<label for="">紧急程度</label>
+														<!-- <label for="">紧急程度</label>
 														<select name="director" id="director" class="form-control">
 															<option value="haha" id="normal" class="normal">正常</option>
 															<option value="haha" id="urgent" class="urgent">紧急</option>
 															<option value="haha" id="emergency" class="emergency">非常紧急</option>
 														</select>
-													</div>
-												</div>
-												<div class="participation row">
-													<div class="form-group">
-														<label class="col-sm-2 control-label">参加人员</label>
-														<div class="col-sm-10">
-															<span class="participats">
-																<a href="">
-																	<img src="img/1.png" alt="" class="headImg">
-																	<span class="name">离老吴</span>
-																</a>
-															</span>
-															<span class="participats">
-																<a href="">
-																	<img src="img/1.png" alt="" class="headImg">
-																	<span class="name">离老吴</span>
-																</a>
-															</span>
-															<span class="participats">
-																<a href="">
-																	<img src="img/1.png" alt="" class="headImg">
-																	<span class="name">离老吴</span>
-																</a>
-															</span>
-															<span class="participats" id="plus">
-																<input type="text" class="form-control" placeholder="查询人员或点击添加">
-																<button class="btn btn-default" type="button">
-																	<span class="glyphicon glyphicon-search"></span>
-																</button>
-															</span>
-															<span class="glyphicon  glyphicon-plus-sign plusparticipats plus"></span>
-
-														</div>
-														<div class="clearfix"></div>
-
-													</div>
-												</div>
-												<div class="taskDeirection">
-													<label for="taskDeirection">任务描述</label>
-													<textarea class="form-control" rows="5" id="taskDeirection"></textarea>
-												</div>
-												<div id="taskLabel">
-													<span>标签</span>
-													<ul class="list-unstyled labelIn clearfix" id="labelIn">
-														<li>
-															加油
-															<span class="glyphicon glyphicon-remove"></span>
-														</li>
-														<li>
-															加油
-															<span class="glyphicon glyphicon-remove"></span>
-														</li>
-														<li>
-															加油
-															<span class="glyphicon glyphicon-remove"></span>
-														</li>
-													</ul>
-													<span class="participats" id="addLabel">
-														<input type="text" class="form-control" placeholder="添加标签">
-														<button class="btn btn-default" type="button" id="addLabelBtn">
-															<span class="glyphicon glyphicon-plus"></span>
-														</button>
-													</span>
-													<span class="glyphicon glyphicon-plus-sign plus addLabel"></span>
-													<div class="clearfix"></div>
-													<div class="comment">
-														<label for="comment">备注</label>
-														<textarea class="form-control" rows="2" id="comment"></textarea>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-													<button type="submit" class="btn btn-primary">提交</button>
-												</div>
-											</form>
-											<div class="recommend">
-												<ul class="list-unstyled">
-													<li class="row"><a href="">
-														<span class="recommendName col-sm-2">六六六</span>
-														<span class="recommendTaskName col-sm-8">asdfasdf</span>
-														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
-														<div class="clearfix"></div>
-													</a></li>
-													<li class="row"><a href="">
-														<span class="recommendName col-sm-2">六六六</span>
-														<span class="recommendTaskName col-sm-8">asdfasdf</span>
-														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
-														<div class="clearfix"></div>
-													</a></li>
-													<li class="row"><a href="">
-														<span class="recommendName col-sm-2">六六六</span>
-														<span class="recommendTaskName col-sm-8">asdfasdf</span>
-														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
-														<div class="clearfix"></div>
-													</a></li>
-												</ul>
+														-->
+													<label for="strat_date">起始日期</label>
+													<input type="date" id="start_date" class="form-control"></div>
+												<div class="col-xs-4 form-group">
+													<label for="end_date">结束日期</label>
+													<input type="date" id="end_date" class="form-control"></div>
 											</div>
+											<div class="participation row">
+												<div class="form-group">
+													<label class="col-sm-2 control-label">参加人员</label>
+													<div class="col-sm-10">
+														<span class="participats">
+															<a href="">
+																<img src="img/1.png" alt="" class="headImg">
+																<span class="name">离老吴</span>
+															</a>
+														</span>
+														<span class="participats">
+															<a href="">
+																<img src="img/1.png" alt="" class="headImg">
+																<span class="name">离老吴</span>
+															</a>
+														</span>
+														<span class="participats">
+															<a href="">
+																<img src="img/1.png" alt="" class="headImg">
+																<span class="name">离老吴</span>
+															</a>
+														</span>
+														<span class="participats" id="plus">
+															<input type="text" class="form-control" placeholder="查询人员或点击添加">
+															<button class="btn btn-default" type="button">
+																<span class="glyphicon glyphicon-search"></span>
+															</button>
+														</span>
+														<span class="glyphicon  glyphicon-plus-sign plusparticipats plus"></span>
+
+													</div>
+													<div class="clearfix"></div>
+
+												</div>
+											</div>
+											<div class="taskDeirection">
+												<label for="taskDeirection">任务描述</label>
+												<textarea class="form-control" rows="5" id="taskDeirection"></textarea>
+											</div>
+											<div id="taskLabel">
+												<span>标签</span>
+												<ul class="list-unstyled labelIn clearfix" id="labelIn">
+													<li>
+														加油
+														<span class="glyphicon glyphicon-remove"></span>
+													</li>
+													<li>
+														加油
+														<span class="glyphicon glyphicon-remove"></span>
+													</li>
+													<li>
+														加油
+														<span class="glyphicon glyphicon-remove"></span>
+													</li>
+												</ul>
+												<span class="participats" id="addLabel">
+													<input type="text" class="form-control" placeholder="添加标签">
+													<button class="btn btn-default" type="button" id="addLabelBtn">
+														<span class="glyphicon glyphicon-plus"></span>
+													</button>
+												</span>
+												<span class="glyphicon glyphicon-plus-sign plus addLabel"></span>
+												<div class="clearfix"></div>
+												<div class="comment">
+													<label for="comment">备注</label>
+													<textarea class="form-control" rows="2" id="comment"></textarea>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+												<button type="submit" class="btn btn-primary">提交</button>
+											</div>
+										</form>
+										<div class="recommend">
+											<ul class="list-unstyled">
+												<li class="row">
+													<a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a>
+												</li>
+												<li class="row">
+													<a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a>
+												</li>
+												<li class="row">
+													<a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a>
+												</li>
+											</ul>
 										</div>
-										<!-- /.modal-content -->
 									</div>
-									<!-- /.modal -->
+									<!-- /.modal-content -->
 								</div>
+								<!-- /.modal -->
 							</div>
 						</div>
-						<div id="myTaskList">
-							<table class="table table-hover">
-								<tr>
-									<td class="number">
-										<input type="checkbox"></td>
-									<td class="mission">
-										<span class="taskName">啊哈哈哈哈哈哈</span>
-										<button class="btn success">10%</button>
-									</td>
-									<td class="emergency">正常</td>
-									<td class="releaseDate">2019-09-09</td>
-								</tr>
-								<tr>
-									<td class="number">
-										<input type="checkbox"></td>
-									<td>
-										<span class="taskName">啊哈哈哈哈哈哈</span>
-										<button class="btn success">10%</button>
-									</td>
-									<td class="emergency">正常</td>
-									<td class="releaseDate">2019-09-09</td>
-								</tr>
-							</table>
-						</div>
+					</div>
+					<div id="myTaskList">
+						<table class="table table-hover">
+							<tr>
+								<td class="number">
+									<input type="checkbox"></td>
+								<td class="mission">
+									<span class="taskName">啊哈哈哈哈哈哈</span>
+									<button class="btn success">10%</button>
+								</td>
+								<td class="emergency">正常</td>
+								<td class="releaseDate">2019-09-09</td>
+							</tr>
+							<tr>
+								<td class="number">
+									<input type="checkbox"></td>
+								<td>
+									<span class="taskName">啊哈哈哈哈哈哈</span>
+									<button class="btn success">10%</button>
+								</td>
+								<td class="emergency">正常</td>
+								<td class="releaseDate">2019-09-09</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
+</div>
+<script>
 		var dHeight = $(document).height(); //获取文档高度
 		var hHeight = $('nav').height(); //获取头部高度
 		var oH = dHeight - hHeight;    //改变左侧侧边栏高度
@@ -342,7 +361,7 @@ $(function(){
 		}) 
 
 	</script>
-	<script>
+<script>
 		//随机获取标签颜色赋给标签
 		function getColor(){ //随机获取标签颜色
 			return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
@@ -425,8 +444,10 @@ $(function(){
 				});
 				$("#newTask .recommend").show(300);
 			}else{
+				var nW = $("#newTask").width();
+				var auto = (nW - $(".modal-dialog").width())/2;
 				$("#newTask .modal-dialog").animate({
-					"margin":"30px auto 30px auto"
+					"marginLeft":auto
 				});
 				$("#newTask .recommend").hide(300)
 			}
