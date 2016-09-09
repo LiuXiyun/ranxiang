@@ -25,7 +25,7 @@ var calUtil = {
     //绑定上个月事件
     $(".calendar_month_prev").click(function(){
       //ajax获取日历json数据
-      var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"}];
+      var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":""}];
       calUtil.eventName="prev";
       calUtil.init(signList);
     });
@@ -68,6 +68,8 @@ var calUtil = {
   },
   getDaysInmonth : function(iMonth, iYear){
    var dPrevDate = new Date(iYear, iMonth, 0);
+   var month = dPrevDate.getMonth() + 1;
+   console.log(dPrevDate.getMonth() + 1 );
    return dPrevDate.getDate();
   },
   bulidCal : function(iYear, iMonth) {

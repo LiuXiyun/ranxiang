@@ -106,8 +106,8 @@ $(function(){
 				<div id="myTask">
 					<div class="right_head">
 						<div class="checkbox pull-left">
-							<label>
-								<input type="checkbox">全选</label>
+							<label for="allCheck">
+								<input type="checkbox" id="allCheck">全选</label>
 						</div>
 						<div class="dropdown pull-left">
 							<button id="category" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="disabled">
@@ -158,6 +158,7 @@ $(function(){
 							<button type="button" class="btn btn-success newTask" data-toggle="modal" data-target="#newTask">添加新任务</button>
 							<!-- 模态框（Modal） -->
 							<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -227,10 +228,10 @@ $(function(){
 												</div>
 												<div class="taskDeirection">
 													<label for="taskDeirection">任务描述</label>
-													<textarea class="form-control" rows="5" id="textarea"></textarea>
+													<textarea class="form-control" rows="5" id="taskDeirection"></textarea>
 												</div>
 												<div id="taskLabel">
-													<span>标签:</span>
+													<span>标签</span>
 													<ul class="list-unstyled labelIn clearfix" id="labelIn">
 														<li>
 															加油
@@ -246,19 +247,45 @@ $(function(){
 														</li>
 													</ul>
 													<span class="participats" id="addLabel">
-																<input type="text" class="form-control" placeholder="添加标签">
-																<button class="btn btn-default" type="button" id="addLabelBtn">
-																	<span class="glyphicon glyphicon-plus"></span>
-																</button>
-															</span>
+														<input type="text" class="form-control" placeholder="添加标签">
+														<button class="btn btn-default" type="button" id="addLabelBtn">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+													</span>
 													<span class="glyphicon glyphicon-plus-sign plus addLabel"></span>
 													<div class="clearfix"></div>
+													<div class="comment">
+														<label for="comment">备注</label>
+														<textarea class="form-control" rows="2" id="comment"></textarea>
+													</div>
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 													<button type="submit" class="btn btn-primary">提交</button>
 												</div>
 											</form>
+											<div class="recommend">
+												<ul class="list-unstyled">
+													<li class="row"><a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a></li>
+													<li class="row"><a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a></li>
+													<li class="row"><a href="">
+														<span class="recommendName col-sm-2">六六六</span>
+														<span class="recommendTaskName col-sm-8">asdfasdf</span>
+														<span class="recommendTaskTime col-sm-2">2014/09/04</span>
+														<div class="clearfix"></div>
+													</a></li>
+												</ul>
+											</div>
 										</div>
 										<!-- /.modal-content -->
 									</div>
@@ -267,10 +294,10 @@ $(function(){
 							</div>
 						</div>
 						<div id="myTaskList">
-
 							<table class="table table-hover">
 								<tr>
-									<td class="number">1</td>
+									<td class="number">
+										<input type="checkbox"></td>
 									<td class="mission">
 										<span class="taskName">啊哈哈哈哈哈哈</span>
 										<button class="btn success">10%</button>
@@ -279,7 +306,8 @@ $(function(){
 									<td class="releaseDate">2019-09-09</td>
 								</tr>
 								<tr>
-									<td class="number">1</td>
+									<td class="number">
+										<input type="checkbox"></td>
 									<td>
 										<span class="taskName">啊哈哈哈哈哈哈</span>
 										<button class="btn success">10%</button>
@@ -301,6 +329,7 @@ $(function(){
 		$('.task').height(oH);
 		$(function(){   //新建任务点击添加人员时候的输入框切换
 			$(document).bind("click",function(e){ 
+				$("#plus input").val(null);
 				var target = $(e.target); 
 				if(target.closest(".plusparticipats,#plus").length == 0){ 
 				$("#plus").hide(); 
@@ -349,8 +378,9 @@ $(function(){
 			$(this).parent("#taskLabel .labelIn li").remove();
 		})
 
-		$(function(){   //新建标签点击添加人员时候的输入框切换
+		$(function(){   //新建标签点击添加添加标签的输入框切换
 			$(document).bind("click",function(e){ 
+				$("#addLabel input").val(null);
 				var target = $(e.target); 
 				if(target.closest(".addLabel,#addLabel").length == 0){ 
 				$("#addLabel").hide(); 
@@ -364,12 +394,50 @@ $(function(){
 
 		$("#addLabelBtn").on("click",function(){
 			var val = $("#addLabel input").val();
-			var color = getColor();
-			$("#labelIn").append("<li style = 'background:" + color + "'>" + val + "<span class='glyphicon glyphicon-remove' style='background:"+color+"'></span></li>");
-			$(".glyphicon").on("click",function(){ //点击删除此标签
-				$(this).parent("#taskLabel .labelIn li").remove();
-			})
+			if(val != ""){
+				var color = getColor();
+				$("#labelIn").append("<li style = 'background:" + color + "'>" + val + "<span class='glyphicon glyphicon-remove' style='background:"+color+"'></span></li>");
+				$(".glyphicon").on("click",function(){ //点击删除此标签
+					$(this).parent("#taskLabel .labelIn li").remove();
+				})
+			}else{
+				return false
+			}
+			
 		})
+		$("#allCheck").on("click",function(){
+			if($(this).is(':checked')){
+			console.log("allCheck");
 
-	</script></body>
+				$("td.number input").prop("checked","true");
+			}else{
+			console.log("allCheck1");
+
+				$("td.number input").prop("checked",function(){
+					return false
+				});
+			}
+		})
+		$("#taskName").blur(function(){
+			if($("#newTask input").val() != ""){
+				$("#newTask .modal-dialog").animate({
+					"margin":"30px auto 30px 30px"
+				});
+				$("#newTask .recommend").show(300);
+			}else{
+				$("#newTask .modal-dialog").animate({
+					"margin":"30px auto 30px auto"
+				});
+				$("#newTask .recommend").hide(300)
+			}
+		})
+		$(".newTask").on('click',function(){
+				console.log(1);
+				$("#newTask .modal-dialog").css({
+					"margin":"30px auto"
+				});
+				$("#newTask .recommend").hide()
+		})
+	</script>
+</body>
 </html>

@@ -42,9 +42,16 @@ html,body{height: 100%}
 #myTaskList .btn{padding: 2px 5px;font-size: 14px}
 #taskName{margin-bottom: 10px;}
 #messionDirector{margin-right: -2px;}
+#newTask .modal-dialog{position: relative;}
 #newTask .col-xs-4{margin-bottom: 15px;padding-right: 0;padding-left:3px;}
 #newTask .col-xs-4 label{width: 25%;font-size: 12px;text-align: right;}
 #newTask .col-xs-4 select,#newTask .col-xs-4 input{width: 72%;display: inline-block;font-size: 12px;}
+#newTask .recommend{display: none;position: absolute;right: -105%;top: 0;background: #fff;width: 100%;padding: 15px;border:1px solid #e5e5e5;box-shadow: 0 5px 15px rgba(0, 0, 0, .5);border-radius: 6px;color:#000;}
+#newTask .recommend:after{content: "";border-right: 21px dashed #fff;border-top: 11px solid transparent;border-bottom: 11px solid transparent;position: absolute;top: 18%;left: -3.5%;}
+#newTask .recommend:before{content: "";border-right: 23px dashed #e5e5e5;border-top: 11px solid transparent;border-bottom: 11px solid transparent;position: absolute;top: 18%;left: -4%;}
+#newTask .recommend .row{margin: 0;}
+#newTask .recommend li{border-bottom: 1px solid #ccc;padding: 5px;}
+
 #end_date{padding: 0;padding-left: 12px;}
 .participation label:first-child{margin-top: 5px;text-align: left;padding-right: 0;width: 14%}
 .participation .form-group{margin-bottom: 0;}
@@ -59,7 +66,7 @@ html,body{height: 100%}
 .taskDeirection{margin-top: 5px;}
 /*标签样式*/
 #taskLabel{margin-top: 10px;}
-#taskLabel span:first-child{float: left;margin-right: 20px;}
+#taskLabel span:first-child{float: left;margin-right: 20px;font-weight: bold}
 #taskLabel .labelIn{float: left;}
 #taskLabel .labelIn li{
 	float: left;

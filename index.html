@@ -64,6 +64,10 @@ $(function(){
 				<div id="calendar">
 					<div style="width:300px;height:300px;" id="calendar"></div>
 				</div>
+				<div class="time">
+					<p id="signInTime">签到：<span></span></p>
+					<p id="signOutTime">签退：<span></span></p>
+				</div>
 				<button class="btn btn-block btn-lg" id="signIn"  data-toggle="modal" data-target="#myModal">签到</button>
 
 				<!-- 模态框（Modal） -->
@@ -125,14 +129,26 @@ $(function(){
 		</div>
 	</div>
 	<script>
-		var mydate = new Date();
-   		var str = "" + mydate.getFullYear() + "年";
-   		str += mydate.getMonth() + 1 + "月";
-   		str += mydate.getDate() + "日";
-   		str += mydate.getHours() + "点"; //获取当前小时数(0-23)
-		str += mydate.getMinutes() + "分"; //获取当前分钟数(0-59)
-		str += mydate.getSeconds() + "秒"; //获取当前秒数(0-59)
-		$("#date").html(str);
+		var signIn = 1;
+		$("#signIn").on('click',function(){
+			var mydate = new Date();
+	   		var str = "" + mydate.getFullYear() + "年";
+	   		str += mydate.getMonth() + 1 + "月";
+	   		str += mydate.getDate() + "日";
+	   		str += mydate.getHours() + "点"; //获取当前小时数(0-23)
+			str += mydate.getMinutes() + "分"; //获取当前分钟数(0-59)
+			str += mydate.getSeconds() + "秒"; //获取当前秒数(0-59)
+			$("#date").html(str);
+			if(signIn === 1){
+				$("#signIn").html("签退");
+				signIn = signIn + 1;
+				$("#signInTime span").html(str);
+			}else{
+				$("#signOutTime span").html(str);
+				$(".modal-title").html("签退成功");
+			}
+		});
+		
 	</script>
 </body>
 </html>
