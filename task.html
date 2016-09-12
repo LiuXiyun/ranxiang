@@ -20,6 +20,7 @@ $(function(){
 </script>
 </head>
 <body>
+	<!----导航---->
 	<nav class="navbar navbar-default" role="navigation" >
 		<div class="container-fluid">
 			<div class="navbar-header col-md-3">
@@ -59,6 +60,7 @@ $(function(){
 		</div>
 	</nav>
 	<div class="container_fluid row task">
+		<!------左侧侧边栏------>
 		<div class="col-sm-3 taskNav">
 			<div class="panel-group" id="list" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">
@@ -74,36 +76,35 @@ $(function(){
 					</div>
 					<div id="taskList" class="panel-collapse collapse in">
 						<ul class="list-unstyled">
-							<li>
-								<a href="">进行中</a>
+							<li class="active">
+								<a href="#myTask" data-toggle="tab">我的任务</a>
 							</li>
 							<li>
-								<a href="">未完成</a>
+								<a href="">任务评论于反馈</a>
 							</li>
 							<li>
-								<a href="">已完成</a>
+								<a href="#trash" data-toggle="tab">回收站</a>
 							</li>
 						</ul>
 					</div>
 					<div class="panel-heading"  role="tab">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#list" 
-				   href="#taskList2">
+							<a data-toggle="collapse" data-parent="#list" id="commentsAndFeedback" onclick = "hrefLocation('commentsAndFeedback.html')">
 								<span class="glyphicon glyphicon-list"></span>
-								任务
+								任务评论于反馈
 								<span class="glyphicon glyphicon-chevron-right"></span>
 							</a>
 						</h4>
 					</div>
-					<div id="taskList2" class="panel-collapse collapse">
-						<ul class="list-unstyled"></ul>
-					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-9 right_aside">
+		<!----左侧侧边栏结束---->
+
+		<div class="col-sm-9 right_aside tab-content">
 			<div id="container">
-				<div id="myTask">
+				<!------我的任务------>
+				<div id="myTask" class="tab-pane fade in active">
 					<div class="right_head">
 						<div class="checkbox pull-left">
 							<label for="allCheck">
@@ -154,50 +155,49 @@ $(function(){
 								</button>
 							</span>
 						</div>
+						<div class="checkAll">
+							<button>批量删除</button>
+							<button>批量关注</button>
+							<button>批量完成</button>
+						</div>
+
 						<div class="pull-right">
 							<button type="button" class="btn btn-success newTask" data-toggle="modal" data-target="#newTask">添加新任务</button>
-							<!-- 模态框（Modal） -->
-							<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-											<h4 class="modal-title" id="myModalLabel">添加新任务</h4>
-										</div>
-										<form action="">
-											<div class="modal-body" id="newTask">
-												<div class="row taskname1">
-													<div class="col-xs-8">
-														<input type="text" class="form-control" placeholder="任务名称" id="taskName">
-													</div>
-													<div class="col-xs-4">
-														 <label for="director">紧急程度</label>
-														<select name="director" id="director" class="form-control">
-															<option value="haha" id="normal" class="normal">正常</option>
-															<option value="haha" id="urgent" class="urgent">紧急</option>
-															<option value="haha" id="emergency" class="emergency">非常紧急</option>
-														</select>
-													</div>
+						</div>
+					</div>
+						<!-- 模态框（Modal） -->
+						<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">添加新任务</h4>
+									</div>
+									<form action="">
+										<div class="modal-body" id="newTask">
+											<div class="row taskname1">
+												<div class="col-xs-8">
+													<input type="text" class="form-control" placeholder="任务名称" id="taskName"></div>
+												<div class="col-xs-4">
+													<label for="director">紧急程度</label>
+													<select name="director" id="director" class="form-control">
+														<option value="haha" id="normal" class="normal">正常</option>
+														<option value="haha" id="urgent" class="urgent">紧急</option>
+														<option value="haha" id="emergency" class="emergency">非常紧急</option>
+													</select>
 												</div>
-												<div class="row" id="messionDirector">
-													<div class="col-xs-4 form-group">
-														<label for="">负责人</label>
-														<select name="director" id="director" class="form-control">
-															<option value="haha">哈哈</option>
-															<option value="haha">哈哈</option>
-															<option value="haha">哈哈</option>
-															<option value="haha">哈哈</option>
-														</select>
-													</div>
-													<div class="col-xs-4 form-group">
-														<!-- <label for="">紧急程度</label>
-														<select name="director" id="director" class="form-control">
-															<option value="haha" id="normal" class="normal">正常</option>
-															<option value="haha" id="urgent" class="urgent">紧急</option>
-															<option value="haha" id="emergency" class="emergency">非常紧急</option>
-														</select>
-														-->
+											</div>
+											<div class="row" id="messionDirector">
+												<div class="col-xs-4 form-group">
+													<label for="">负责人</label>
+													<select name="director" id="director" class="form-control">
+														<option value="haha">哈哈</option>
+														<option value="haha">哈哈</option>
+														<option value="haha">哈哈</option>
+														<option value="haha">哈哈</option>
+													</select>
+												</div>
+												<div class="col-xs-4 form-group">
 													<label for="strat_date">起始日期</label>
 													<input type="date" id="start_date" class="form-control"></div>
 												<div class="col-xs-4 form-group">
@@ -311,11 +311,87 @@ $(function(){
 								<!-- /.modal -->
 							</div>
 						</div>
+						<div class="myTaskList">
+							<table class="table table-hover">
+								<tr>
+									<td class="number">
+										<input type="checkbox"></td>
+									<td class="mission">
+										<span class="taskName">啊哈哈哈哈哈哈</span>
+										<button class="btn success">10%</button>
+									</td>
+									<td class="emergency">正常</td>
+									<td class="releaseDate">2019-09-09</td>
+								</tr>
+								<tr>
+									<td class="number">
+										<input type="checkbox"></td>
+									<td>
+										<span class="taskName">啊哈哈哈哈哈哈</span>
+										<button class="btn success">10%</button>
+									</td>
+									<td class="emergency">正常</td>
+									<td class="releaseDate">2019-09-09</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div id="myTaskList">
+				<!----我的任务结束---->
+
+				<!----回收站---->
+				<div id="trash" class="tab-pane fade">
+				<div class="right_head">
+						<div class="checkbox pull-left">
+							<label for="allCheckTrash">
+								<input type="checkbox" id="allCheckTrash">全选</label>
+						</div>
+						<div class="dropdown pull-left">
+							<button id="categoryTrash" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="disabled">
+								类别
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<li>
+									<a href="">已完成</a>
+								</li>
+								<li>
+									<a href="">进行中</a>
+								</li>
+								<li>
+									<a href="">未开始</a>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown pull-left">
+							<button id="sortTrash" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="disabled">
+								排序
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="sort">
+								<li>
+									<a href="">默认</a>
+								</li>
+								<li>
+									<a href="">按紧急程度</a>
+								</li>
+								<li>
+									<a href="">按任务创建时间</a>
+								</li>
+								<li>
+									<a href="">按任务更新时间</a>
+								</li>
+							</ul>
+						</div>
+						<div class="checkAllTrash">
+							<button>批量删除</button>
+							<button>批量关注</button>
+							<button>批量完成</button>
+						</div>
+					</div>
+					<div class="myTaskList">
 						<table class="table table-hover">
 							<tr>
-								<td class="number">
+								<td class="numberTrash">
 									<input type="checkbox"></td>
 								<td class="mission">
 									<span class="taskName">啊哈哈哈哈哈哈</span>
@@ -325,7 +401,7 @@ $(function(){
 								<td class="releaseDate">2019-09-09</td>
 							</tr>
 							<tr>
-								<td class="number">
+								<td class="numberTrash">
 									<input type="checkbox"></td>
 								<td>
 									<span class="taskName">啊哈哈哈哈哈哈</span>
@@ -337,11 +413,10 @@ $(function(){
 						</table>
 					</div>
 				</div>
+				<!-----回收站结束---->
 			</div>
-		</div>
-	</div>
-</div>
-<script>
+		</div></div>
+	<script>
 		var dHeight = $(document).height(); //获取文档高度
 		var hHeight = $('nav').height(); //获取头部高度
 		var oH = dHeight - hHeight;    //改变左侧侧边栏高度
@@ -361,7 +436,7 @@ $(function(){
 		}) 
 
 	</script>
-<script>
+	<script>
 		//随机获取标签颜色赋给标签
 		function getColor(){ //随机获取标签颜色
 			return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
@@ -424,19 +499,45 @@ $(function(){
 			}
 			
 		})
+	</script>
+	<script>
+
+		/*点击全选所有的checkbox*/
 		$("#allCheck").on("click",function(){
 			if($(this).is(':checked')){
-			console.log("allCheck");
-
 				$("td.number input").prop("checked","true");
+				$(".checkAll").css({"display":'block'});
+				$("#category").css({"display":"none"});
+				$("#sort").css({"display":"none"});
+				$("#searchTask input,#searchTask .btn").css({"display":"none"});
 			}else{
-			console.log("allCheck1");
-
+				$(".checkAll").css({"display":'none'});
+				$("#category").css({"display":"block"});
+				$("#sort").css({"display":"block"});
+				$("#searchTask input,#searchTask .btn").css({"display":"block"});
 				$("td.number input").prop("checked",function(){
 					return false
 				});
 			}
 		})
+		$("#allCheckTrash").on("click",function(){
+			if($(this).is(':checked')){
+				$("td.numberTrash input").prop("checked","true");
+				$(".checkAllTrash").css({"display":'block'});
+				$("#categoryTrash").css({"display":"none"});
+				$("#sortTrash").css({"display":"none"});
+			}else{
+				$(".checkAllTrash").css({"display":'none'});
+				$("#categoryTrash").css({"display":"block"});
+				$("#sortTrash").css({"display":"block"});
+				$("td.numberTrash input").prop("checked",function(){
+					return false
+				});
+			}
+		})
+		/*点击全选所有的checkbox结束*/
+
+		/*添加任务后的任务推荐列表*/
 		$("#taskName").blur(function(){
 			if($("#newTask input").val() != ""){
 				$("#newTask .modal-dialog").animate({
@@ -453,12 +554,24 @@ $(function(){
 			}
 		})
 		$(".newTask").on('click',function(){
-				console.log(1);
 				$("#newTask .modal-dialog").css({
 					"margin":"30px auto"
 				});
 				$("#newTask .recommend").hide()
 		})
+		/*添加任务后的任务推荐列表结束*/
+
+
+		$("#taskList a").on("click",function(){  //左侧三级导航点击右侧container 切换
+			var a = $(this).attr("href");
+			$("#container").children().css("display","none");
+			$(a).css("display","block");
+		})
+	</script>
+	<script>
+		function hrefLocation(href){
+			window.location.href = href;
+		}
 	</script>
 </body>
 </html>
