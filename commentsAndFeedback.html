@@ -8,16 +8,7 @@
 	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="index.css">
-	<link rel="stylesheet" type="text/css" href="sign.css"/>
 	<link rel="stylesheet" href="task.css">
-	<script type="text/javascript" src="calendar.js"></script>
-	<script type="text/javascript">
-$(function(){
-  //ajax获取日历json数据
-  var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"},{"signDay":"14"}];
-   calUtil.init(signList);
-});
-</script>
 </head>
 <body>
 	<!----导航---->
@@ -76,7 +67,7 @@ $(function(){
 					</div>
 					<div class="panel-heading"  role="tab">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#list" id="commentsAndFeedback" >
+							<a data-toggle="collapse" data-parent="#list">
 								<span class="glyphicon glyphicon-list"></span>
 								任务评论于反馈
 								<span class="glyphicon glyphicon-chevron-right"></span>
@@ -88,8 +79,268 @@ $(function(){
 		</div>
 		<!----左侧侧边栏结束---->
 
-		<div class="col-sm-9 right_aside tab-content">
-			
+		<div class="col-sm-9 right_aside tab-content" id="commentsAndFeedback">
+			<ul id="feedback" class="nav nav-tabs">
+				<li class="active">
+					<a href="#unread" data-toggle="tab">
+						未读反馈(
+						<span>0</span>
+						)
+					</a>
+				</li>
+				<li>
+					<a href="#atme" data-toggle="tab">
+						@我的反馈(
+						<span>0</span>
+						)
+					</a>
+				</li>
+				<li>
+					<a href="#others" data-toggle="tab">
+						非本人的反馈(
+						<span>0</span>
+						)
+					</a>
+				</li>
+				<li>
+					<a href="#replay" data-toggle="tab">
+						回复我的(
+						<span>0</span>
+						)
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" id="myTabDrop1" class="dropdown-toggle" 
+					   data-toggle="dropdown">
+						更多 <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+						<li>
+							<a href="#charger" tabindex="-1" data-toggle="tab">我负责的任务反馈</a>
+						</li>
+						<li>
+							<a href="#participants" tabindex="-1" data-toggle="tab">我参加的任务反馈</a>
+						</li>
+						<li>
+							<a href="#myResponse" tabindex="-1" data-toggle="tab">我的反馈</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div id="feedBackContent" class="tab-content">
+				<div class="tab-pane fade in active" id="unread">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="atme">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						<div class="responseBtn pull-right">
+							<span class="glyphicon glyphicon-comment">回复</span>
+						</div>
+						<div class="clearfix"></div>
+						<div class="responseResponse">
+							<input type="text" class="form-control inline">
+							<div class="at">
+								<span>@</span>
+								<div class="atPersonal">
+									<div class="atPersonalAll">
+										<div class="atRenyuan pull-left active">
+										人员
+										</div>
+										<div class="pull-right section">部门</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="search">
+										<div class="input-group">
+											<span class="glyphicon glyphicon-search  input-group-addon"></span>
+												  <input type="text" class="form-control" placeholder="personal">
+												</div>
+									</div>
+								</div>
+							</div>
+							<div class="pull-right inline button">
+								<button class="btn">回复</button>
+								<button class="btn">取消</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="others">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="replay">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="charger">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="participants">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="myResponse">
+					<div class="responseContent">
+						<div class="responseContentlist">
+							<div class="responsename pull-left">
+								hello
+								<small>
+									[
+									<span>任务</span>
+									]
+								</small>
+							</div>
+							<div class="responseTime pull-right">2012/12/12-09:39</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="responseName col-sm-2">
+									<div class="responseTimeImg inline">
+										<img src="img/1.png" alt=""></div>
+									<div class="responseNameHeader inline">Westlife</div>
+								</div>
+								<div class="col-sm-10 feedbackText">
+									fjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdffjda;slfjasdf
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script>

@@ -8,12 +8,12 @@ body{background: #EEE}
 tr:hover{cursor: pointer;}
 .navbar-header.col-md-3{width: 21%;}
 .navbar-default .navbar-brand{color:#fff;}
-.navbar-default .navbar-nav > .active > a{color:#337AB7;background: #D9EDF7}
+.navbar-default .navbar-nav > .active > a{color:#7ed1ff;background: #D9EDF7}
 .navbar-default .navbar-nav > li > a{color:#fff;padding:15px 30px;}
 nav .navbar-brand:first-child{padding: 0px 5px;}
 nav img.img-responsive{height: 50px;width: 50px}
 nav li span:first-child{margin-right: 10px;}
-.navbar-default{background: #337AB7}
+.navbar-default{background: #7ed1ff}
 .navbar{border-radius: 0;border:0;}
 #name{margin-right: 100px;}
 .dropdown-menu{min-width: 120px;text-align: center;}
